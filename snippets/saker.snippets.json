@@ -1,0 +1,76 @@
+{
+    "HTML template": {
+        "prefix": "html",
+        "body": [
+            "<!DOCTYPE html>",
+            "<html>",
+            "<head>",
+            "\t<title>${1:Page Title}</title>",
+            "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"${2:main.css}\" />",
+            "</head>",
+            "<body>",
+            "\t$0",
+            "</body>",
+            "</html>"
+        ],
+        "description": "Simple HTML5 starting point"
+	},
+	"Saker function": {
+        "prefix": "@function",
+        "body": [
+            "@function ${1:name}($2) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "function: \n Code snippet for for statement"
+    },
+    "Saker for": {
+        "prefix": "@for",
+        "body": [
+            "@for (${1:index} in ${2:object}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "for: \n Code snippet for for statement"
+    },
+    "Saker if": {
+        "prefix": "@if",
+        "body": [
+            "@if ($1) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "if: \n Code snippet for if statement"
+    },
+    "Saker if else": {
+        "prefix": "@ifelse",
+        "body": [
+            "@if ($1) {",
+            "\t$2",
+            "} else {",
+            "\t$0",
+            "}"
+        ],
+        "description": "if else: \n Code snippet for if else statement"
+    },
+    "Saker try": {
+        "prefix": "@try",
+        "body": [
+            "@try {",
+            "\t$1",
+            "} catch (Exception ${2:exception}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "try catch: \n Code snippet for try catch statement"
+    },
+    "Saker while": {
+        "prefix": "@while",
+        "body": [
+            "@while ($1) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "while: \n Code snippet for while statement"
+    }
+}

@@ -1,0 +1,59 @@
+{
+	"name": "saker",
+	"displayName": "Saker",
+	"description": "Saker syntax and snippets.",
+	"version": "0.0.1",
+	"publisher": "slulego",
+	"engines": {
+		"vscode": "0.10.x"
+	},
+	"categories": [
+		"Other",
+		"Snippets"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/slulego/vscode-saker.git"
+	},
+	"icon": "icon.png",
+	"galleryBanner": {
+		"color": "#111111",
+		"theme": "dark"
+	},
+	"scripts": {
+		"update-grammar": "node ../../build/npm/update-grammar.js grammars/javascript.json ./syntaxes/saker.tmLanguage.json"
+	},
+	"contributes": {
+		"languages": [
+			{
+				"id": "saker",
+				"extensions": [
+					".html"
+				],
+				"aliases": [
+					"Saker"
+				],
+				"mimetypes": [
+					"text/html"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "saker",
+				"scopeName": "text.html.saker",
+				"path": "./syntaxes/saker.tmLanguage.json",
+				"embeddedLanguages": {
+					"section.embedded.source.saker": "saker"
+				}
+			}
+		],
+		"snippets": [
+			{
+				"language": "saker",
+				"path": "./snippets/saker.snippets.json"
+			}
+		]
+	}
+}

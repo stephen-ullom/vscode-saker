@@ -1,0 +1,237 @@
+{
+	"name": "Saker",
+	"scopeName": "text.html.saker",
+	"injections": {
+		"text.html.basic - (meta.embedded | meta.tag), L:text.html.saker meta.tag, L:text.html.saker source.js": {
+			"patterns": [
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#statement"
+				},
+				{
+					"include": "#end-bracket"
+				}
+			]
+		},
+		"source.js - (meta.embedded | meta.tag), L:text.html.saker meta.tag": {
+			"patterns": [
+				{
+					"include": "#expression-explicit"
+				},
+				{
+					"include": "#expression-implicit"
+				}
+			]
+		}
+	},
+	"patterns": [
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#code-block"
+		},
+		{
+			"include": "#end-bracket"
+		},
+		{
+			"include": "#escape-entity"
+		},
+		{
+			"include": "#statement"
+		},
+		{
+			"include": "#function"
+		},
+		{
+			"include": "#include"
+		},
+		{
+			"include": "#else"
+		},
+		{
+			"include": "#else-if"
+		},
+		{
+			"include": "#expression-explicit"
+		},
+		{
+			"include": "#expression-implicit"
+		},
+		{
+			"include": "text.html.basic"
+		}
+	],
+	"repository": {
+		"comment": {
+			"patterns": [
+				{
+					"begin": "\\@\\*",
+					"captures": {
+						"0": {
+							"name": "punctuation.definition.comment.source.saker"
+						}
+					},
+					"name": "comment.block.saker",
+					"end": "\\*\\@"
+				},
+				{
+					"begin": "(^[ \\t]+)?((@//)(?:\\s*((@)internal)(?=\\s|$))?)",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.whitespace.comment.leading.js"
+						},
+						"2": {
+							"name": "comment.line.double-slash.js"
+						},
+						"3": {
+							"name": "punctuation.definition.comment.js"
+						},
+						"4": {
+							"name": "storage.type.internaldeclaration.js"
+						},
+						"5": {
+							"name": "punctuation.decorator.internaldeclaration.js"
+						}
+					},
+					"end": "(?=$)",
+					"contentName": "comment.line.double-slash.js"
+				}
+			]
+		},
+		"code-block": {
+			"begin": "\\@\\{",
+			"captures": {
+				"0": {
+					"name": "keyword.control.saker"
+				}
+			},
+			"patterns": [
+				{
+					"include": "source.js"
+				}
+			],
+			"end": "\\}"
+		},
+		"escape-entity": {
+			"match": "\\@\\@",
+			"name": "keyword.control.saker"
+		},
+		"expression-explicit": {
+			"name": "meta.expression.explicit.saker",
+			"begin": "(\\@)\\(",
+			"captures": {
+				"0": {
+					"name": "keyword.control.saker"
+				}
+			},
+			"patterns": [
+				{
+					"include": "source.js"
+				}
+			],
+			"end": "\\)"
+		},
+		"expression-implicit": {
+			"name": "meta.expression.implicit.saker",
+			"match": "(?<!\\@)(\\@)((\\w+)((?=\\.\\w)\\.\\w+)*((?=\\(.*\\))\\(.*\\))?((?=\\[.*\\]).*\\])?)",
+			"captures": {
+				"0": {
+					"name": "variable.expression.saker"
+				},
+				"1": {
+					"name": "keyword.control.saker"
+				},
+				"2": {
+					"patterns": [
+						{
+							"include": "source.js"
+						}
+					]
+				}
+			}
+		},
+		"statement": {
+			"begin": "\\@(for|if|while|switch)\\s*\\((.*)\\)\\s*\\{",
+			"captures": {
+				"0": {
+					"name": "keyword.control.saker"
+				},
+				"2": {
+					"patterns": [
+						{
+							"include": "source.js"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"include": "source.js"
+				}
+			],
+			"end": "\\}"
+		},
+		"function": {
+			"begin": "\\@function\\s(\\w+)\\s?\\((.*)\\)\\s*\\{",
+			"captures": {
+				"0": {
+					"name": "keyword.control.saker"
+				},
+				"1": {
+					"name": "meta.definition.function.saker entity.name.function.saker"
+				},
+				"2": {
+					"patterns": [
+						{
+							"include": "source.js"
+						}
+					]
+				}
+			},
+			"end": "}",
+			"patterns": [
+				{
+					"include": "text.html.saker"
+				}
+			]
+		},
+		"else-if": {
+			"begin": "(else\\sif)\\s?\\((.*)\\)\\s*\\{",
+			"captures": {
+				"0": {
+					"name": "keyword.control.saker"
+				},
+				"2": {
+					"patterns": [
+						{
+							"include": "source.js"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"include": "source.js"
+				}
+			],
+			"end": "\\}"
+		},
+		"else": {
+			"begin": "else\\s*\\{",
+			"captures": {
+				"0": {
+					"name": "keyword.control.saker"
+				}
+			},
+			"patterns":[
+				{
+					"include": "source.js"
+				}
+			],
+			"end": "\\}"
+		}
+	}
+}
