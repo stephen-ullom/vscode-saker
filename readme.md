@@ -1,7 +1,11 @@
-# Saker
+# Saker for Visual Studio Code
 
-Saker grammers, syntax and snippets.
+Saker formatter, syntax highlighting and snippets.
 
-Download the [Saker NPM Package](https://github.com/eshengsky/saker) for NodeJS.
+Install [Saker](https://www.npmjs.com/package/saker) for NodeJS using "`npm i saker`".
+
+Contribute to this extension on [GitHub](https://github.com/slulego/vscode-saker)
+
+Syntax Highlighting:
 
 ![Editor Screenshot](https://raw.githubusercontent.com/slulego/vscode-saker/master/images/screenshot.png)
