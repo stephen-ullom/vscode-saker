@@ -226,7 +226,7 @@
 					"name": "keyword.control.saker"
 				}
 			},
-			"patterns":[
+			"patterns": [
 				{
 					"include": "source.js"
 				}
