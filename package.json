@@ -2,14 +2,18 @@
 	"name": "saker",
 	"displayName": "Saker",
 	"description": "Saker syntax and snippets.",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"publisher": "slulego",
 	"engines": {
 		"vscode": "0.10.x"
 	},
 	"categories": [
-		"Other",
+		"Programming Languages",
+		"Formatters",
 		"Snippets"
+	],
+	"activationEvents": [
+		"onLanguage:saker"
 	],
 	"repository": {
 		"type": "git",
@@ -20,10 +24,17 @@
 		"color": "#111111",
 		"theme": "dark"
 	},
+	"main": "./extension.js",
 	"scripts": {
-		"update-grammar": "node ../../build/npm/update-grammar.js grammars/javascript.json ./syntaxes/saker.tmLanguage.json"
+		"update-grammar": "node ../../build/npm/update-grammar.js"
 	},
 	"contributes": {
+		"commands": [
+			{
+				"command": "extension.saker",
+				"title": "Format Saker Files"
+			}
+		],
 		"languages": [
 			{
 				"id": "saker",
@@ -31,7 +42,8 @@
 					".html"
 				],
 				"aliases": [
-					"Saker"
+					"Saker",
+					"saker"
 				],
 				"mimetypes": [
 					"text/html"
